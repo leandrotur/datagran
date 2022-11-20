@@ -1,7 +1,7 @@
 
 from datetime import datetime
 
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from celery import Celery
 from mongo_model import Mongo, CmdDoc
 
@@ -29,6 +29,13 @@ def new_task():
     print("test sending CELERY")
     return {'id': str(cmd_doc.id)}
 
+
+@app.route('/get_output', methods=['GET'])
+def get_output():
+    id = request.args.get('id')
+    cmddoc = CmdDoc.objects(id=id)
+    return jsonify(cmddoc.to_json())
+    
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
