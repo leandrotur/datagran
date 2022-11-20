@@ -8,14 +8,9 @@
             "name": "Python: flask",
             "type": "python",
             "request": "launch",
-            "program": "I:\\My Drive\\datagran\\Python-Flask-MongoDB-with-Docker-Compose\\app\\app.py",
+            "program": "I:\\My Drive\\datagran\\datagran\\app\\app.py",
             "console": "integratedTerminal",
-            "cwd": "I:\\My Drive\\datagran\\Python-Flask-MongoDB-with-Docker-Compose\\app",
-            "args": [
-                  "SHALOM"         ],
-            "env": {
-                "PY_ENV": "blue"
-            },
+            "cwd": "I:\\My Drive\\datagran\\datagran\\app",
             "justMyCode": false
         },
     ]

@@ -11,7 +11,7 @@ First, making clone to this project, doing:
 git clone https://github.com/leandrotur/datagran.git
 ```
 
-And then, execute the Docker Compose instruction to launch Tech Stack (`Python`, `Flask` and `MongoDB`). 
+And then, execute the Docker Compose instruction to launch Tech Stack (`Python(web)`, `Celery(worker)`, `redis`, `mongoDB_express` and `MongoDB(database)`). 
 
 ```bash
 docker-compose up -d
@@ -47,25 +47,16 @@ db.createUser(
 )
 ```
 
-## Runnnig containers and showing results.
-
-This result is using the `curl` tool.
-
-```bash
-$ curl 127.0.0.1:8000
-<h1 style="background-color: #262626; color: white; padding: 20px; text-align:center;">Hello, datagran!</h1>
-```
-
 
 
 ## Testing MongoDB Connection as an API
 
-Execute the following instruction using `curl` or the browser.
 
-```bash
 $ use postman: http://127.0.0.1:8000/new_task ( with this body {"cmd": "ls"} )
+use postman: http://127.0.0.1:8000/get_output?id={ID} 
 
-"task created!!"
+Examples of get_output and new_task end points: https://www.getpostman.com/collections/d1f33f61f8d6efea55d5
+
 ```
 
 ## Other instructions
