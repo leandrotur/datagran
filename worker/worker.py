@@ -14,12 +14,12 @@ app = Celery(
 app_f = Flask(__name__)
 db = Mongo(app_f).db
 
+
 @app.task(name='execute_task')  # Named task
-def execute_task(id:str, cmd:str):
+def execute_task(id: str, cmd: str):
     cmddoc = CmdDoc.objects(id=id)
     try:
         status = os.system(cmd)
-        
         if not status:
             cmddoc.update(status="Executed")
         else:
@@ -28,4 +28,3 @@ def execute_task(id:str, cmd:str):
     except Exception as e:
         print(e)
         cmddoc.update(status="Failed")
-

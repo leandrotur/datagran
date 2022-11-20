@@ -14,18 +14,21 @@ celery = Celery(
 )
 db = Mongo(app).db
 
+
 @app.route('/new_task', methods=['POST'])
 def new_task():
     request_data = request.get_json()
     cmd = request_data['cmd']
-    
-    cmd_doc = CmdDoc(name=cmd, status= "Created", creation_date=datetime.utcnow())
+    cmd_doc = CmdDoc(
+        name=cmd,
+        status="Created",
+        creation_date=datetime.utcnow()
+    )
     cmd_doc.save()
     celery.send_task('execute_task', (str(cmd_doc.id), cmd))
-    print ("test sending CELERY")
+    print("test sending CELERY")
     return {'id': str(cmd_doc.id)}
+
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
-
-
-    

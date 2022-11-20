@@ -1,7 +1,8 @@
 import datetime
 from flask_mongoengine import MongoEngine
-from mongoengine import *
 db = MongoEngine()
+
+
 class Mongo:
     def __init__(
         self,
@@ -14,9 +15,11 @@ class Mongo:
             'username': 'root-datagran',
             'password': 'password-datagran'
         }
-        
+
         db.init_app(app)
         self.db = db
+
+
 class CmdDoc(db.Document):
     name = db.StringField()
     status = db.StringField()

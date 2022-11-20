@@ -30,6 +30,7 @@ services:
     image: mongo:latest
     env_file:
       - .env
+    restart: always
     container_name: ${MONGO_HOST}
     hostname: ${MONGO_HOST}
     environment:
