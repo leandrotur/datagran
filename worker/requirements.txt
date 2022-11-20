@@ -1,0 +1,4 @@
+celery==5.2.3
+Flask==2.1.2
+flask_mongoengine
+Redis
